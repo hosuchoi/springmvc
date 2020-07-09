@@ -1,0 +1,21 @@
+1) Handler Interceptor 전체 흐름
+
+    preHandler 1       true인 경우 다음 호출
+    preHandler 2
+
+     ===요청처리===      Controller 호출
+
+    postHandler 2       ModelAndView 커스텀 가능
+    postHandler 1
+
+     ===뷰 랜더링===
+
+    afterCompletion 2
+    afterCompletion 1
+
+2) servelet filter와의 차이점
+    - Handler Interceptor는 servlet filter보다는 더 구체적인 방법임
+    - 일반적인 spring web은 servlet filter를 사용한다
+          ( 예) XSS 공격에 대한 방어 )
+    - Spring Web MVC의 특화된 기능에 적용할 경우에는 Handler Interceptor를 사용 한다
+         ( 예) Model의 값을 변경, modelAndView를 커스텀 등...구체적인 구현처리가 필요한 경우 )
