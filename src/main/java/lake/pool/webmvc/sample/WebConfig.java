@@ -1,10 +1,8 @@
 package lake.pool.webmvc.sample;
 
-import lake.pool.webmvc.sample.formatter.PersonFormatter;
 import lake.pool.webmvc.sample.handlerinterceptor.AnotherInterceptor;
 import lake.pool.webmvc.sample.handlerinterceptor.GreetingInterceptor;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.format.FormatterRegistry;
 import org.springframework.http.CacheControl;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -49,4 +47,38 @@ public class WebConfig implements WebMvcConfigurer {
 //                .addResolver() //요청에 해당하는 리소스를 찾는 방법
 //                .addTransformer() //응답으로 내보낼 리소스를 변경하는 방법
     }
+
+
+    /*
+    Http Message Converter 설정
+     */
+
+    /*
+    기본 컨버터를 사용 못함
+    WebMvcConfigurer 에 설명 되어 있음음
+     */
+//   @Override
+//    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+//
+//    }
+    
+    /*
+    기본 컨버터는 사용하고 특정 메세지컨버터를 추가로 하려고 할때 사용
+    -> 근데 대부분 우리는 의존성을 추가해서 classpath를 통한 자동 등록해서 사용한다 ( WebMvcConfigurationSupport 에서 해줌 )
+     */
+//    @Override
+//    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+//
+//    }
+
+    /*
+    xml 파싱을 위한 빈생성
+
+     */
+//    @Bean
+//    public Jaxb2Marshaller jaxb2Marshaller(){
+//        Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
+//        jaxb2Marshaller.setPackagesToScan(Person.class.getPackageName()); //  패키지내에 @XmlRootElement 할 객체들을 알려줘야 변환 가능
+//        return jaxb2Marshaller;
+//    }
 }
